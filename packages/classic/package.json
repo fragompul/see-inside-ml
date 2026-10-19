@@ -1,0 +1,20 @@
+{
+  "name": "@sim/classic",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Classical machine learning written from scratch: regression, trees, SVM, clustering, probabilistic models.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sim/core": "*"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.4"
+  }
+}
