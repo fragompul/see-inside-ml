@@ -1,0 +1,22 @@
+{
+  "name": "@sim/deep",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Deep learning written from scratch: MLP, CNN, RNN, transformer, generative models, RL.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./models/*": "./models/*"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "bench": "vitest run -c vitest.bench.config.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sim/core": "*"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.4"
+  }
+}
