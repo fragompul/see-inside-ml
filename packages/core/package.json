@@ -1,0 +1,18 @@
+{
+  "name": "@sim/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Numerical core shared by every model: random numbers, matrices, optimizers, activations, losses.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./datasets": "./src/datasets/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.4"
+  }
+}
