@@ -1,0 +1,286 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/bricolage-grotesque/index.css';
+@import '@fontsource-variable/geist/index.css';
+@import '@fontsource-variable/jetbrains-mono/index.css';
+@import '@fontsource/instrument-serif/latin-400-italic.css';
+@import '@fontsource/instrument-serif/latin-400.css';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ───────────────────────── Design tokens ─────────────────────────
+   Two palettes, one semantic system:
+   · pos   (ember) = positive weights / positive activations
+   · neg   (frost) = negative weights / negative activations
+   · brand (iris)  = interaction, focus, "the model is thinking"
+   Light = "Parchment" (warm paper + ink). Dark = "Obsidian" (blue-black + glow). */
+:root {
+  color-scheme: light;
+  --bg: #f3efe6;
+  --bg-soft: #ebe6da;
+  --surface: #faf8f2;
+  --raised: #ffffff;
+  --line: rgba(28, 26, 40, 0.12);
+  --line-strong: rgba(28, 26, 40, 0.24);
+  --fg: #16151f;
+  --muted: #4f4d5f;
+  --faint: #656273;
+  --brand: #5a45e6;
+  --brand-fg: #ffffff;
+  --brand-soft: rgba(90, 69, 230, 0.12);
+  --pos: #d9680a;
+  --neg: #0b7fa6;
+  --ok: #138a5b;
+  --danger: #cc2f45;
+  --class-0: #d9680a;
+  --class-1: #0b7fa6;
+  --class-2: #138a5b;
+  --class-3: #8a3fe0;
+  --class-4: #d12f6c;
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 12px 32px -16px rgba(40, 30, 80, 0.25);
+  --grid-dot: rgba(28, 26, 40, 0.14);
+  --grain-opacity: 0.35;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #08090e;
+  --bg-soft: #0d0f16;
+  --surface: #10121a;
+  --raised: #171a25;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.17);
+  --fg: #ecedf5;
+  --muted: #9296ab;
+  --faint: #7f849a;
+  --brand: #9a8cff;
+  --brand-fg: #0a0a14;
+  --brand-soft: rgba(154, 140, 255, 0.14);
+  --pos: #ffb454;
+  --neg: #4fd1ff;
+  --ok: #5fe3a1;
+  --danger: #ff6b7f;
+  --class-0: #ffb454;
+  --class-1: #4fd1ff;
+  --class-2: #5fe3a1;
+  --class-3: #c792ff;
+  --class-4: #ff6b9a;
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 20px 40px -20px rgba(0, 0, 0, 0.7);
+  --grid-dot: rgba(255, 255, 255, 0.09);
+  --grain-opacity: 0.5;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-brand: var(--brand);
+  --color-brand-fg: var(--brand-fg);
+  --color-brand-soft: var(--brand-soft);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+  --color-class-0: var(--class-0);
+  --color-class-1: var(--class-1);
+  --color-class-2: var(--class-2);
+  --color-class-3: var(--class-3);
+  --color-class-4: var(--class-4);
+
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--brand-fg);
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* Smooth cross-fade of the palette while the theme switches. */
+html[data-theme-changing] *,
+html[data-theme-changing] *::before,
+html[data-theme-changing] *::after {
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    fill 0.45s ease,
+    stroke 0.45s ease,
+    box-shadow 0.45s ease !important;
+}
+
+@layer components {
+  /* Dotted blueprint grid, faded toward the edges. */
+  .bg-dots {
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+  }
+  /* Film grain: gives flat surfaces a tactile, printed feel. */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .text-gradient-signal {
+    background: linear-gradient(100deg, var(--neg), var(--brand) 50%, var(--pos));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
+
+@keyframes tip {
+  from {
+    opacity: 0;
+    transform: translateY(2px) scale(0.97);
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.06);
+  }
+}
+
+/* Data "flowing" along the strongest connections while the network trains. */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+.flow-edge {
+  stroke-dasharray: 2 12;
+  stroke-linecap: round;
+  animation: flow 0.9s linear infinite;
+}
+
+/* Backpropagation flows against the grain: same dashes, reversed. */
+.flow-back {
+  animation-direction: reverse;
+}
+
+/* Token chips: one hue per position (`--h` is set inline), lightness adapts to the theme. */
+:root {
+  --tok-l: 36%;
+  --tok-a: 0.13;
+}
+[data-theme='dark'] {
+  --tok-l: 66%;
+  --tok-a: 0.16;
+}
+.tok {
+  background: hsl(var(--h) 75% var(--tok-l) / var(--tok-a));
+  border: 1px solid hsl(var(--h) 75% var(--tok-l) / 0.5);
+}
+.tok-solid {
+  background: hsl(var(--h) 75% var(--tok-l) / 0.85);
+}
+[data-theme='dark'] .tok-solid {
+  /* lighter so the dark text on it stays above 4.5:1 for every hue */
+  background: hsl(var(--h) 75% 74%);
+}
+
+/* Monospace text carries code-like tokens such as <|endoftext|>: never fuse them into ligatures. */
+.font-mono,
+code,
+kbd {
+  font-variant-ligatures: none;
+}
+
+/* Text in the accent colours needs a deeper tone on the light parchment to reach 4.5:1 (WCAG AA);
+   fills and plots keep the brighter tokens. In dark mode the tokens already pass. */
+:root {
+  --pos-ink: #a34e08;
+  --neg-ink: #096d8e;
+  --ok-ink: #10744c;
+  --danger-ink: #bd2c40;
+  --class-3-ink: #8638df;
+  --class-4-ink: #bb2960;
+}
+[data-theme='dark'] {
+  --pos-ink: var(--pos);
+  --neg-ink: var(--neg);
+  --ok-ink: var(--ok);
+  --danger-ink: var(--danger);
+  --class-3-ink: var(--class-3);
+  --class-4-ink: var(--class-4);
+}
+.text-pos,
+.text-class-0 {
+  color: var(--pos-ink);
+}
+.text-neg,
+.text-class-1 {
+  color: var(--neg-ink);
+}
+.text-ok,
+.text-class-2 {
+  color: var(--ok-ink);
+}
+.text-danger {
+  color: var(--danger-ink);
+}
+.text-class-3 {
+  color: var(--class-3-ink);
+}
+.text-class-4 {
+  color: var(--class-4-ink);
+}
