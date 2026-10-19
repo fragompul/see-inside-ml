@@ -1,0 +1,35 @@
+{
+  "name": "see-inside-ml",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive labs to see inside every machine-learning model, from linear regression to transformers.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @sim/web",
+    "build": "npm run build -w @sim/web",
+    "preview": "npm run preview -w @sim/web",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "e2e": "npm run e2e -w @sim/web",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build && node tools/check-bundle.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.12.0",
+    "eslint-plugin-react-hooks": "latest",
+    "globals": "latest",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules
+dist
+coverage
+package-lock.json
+reference
+img
+README.md
+packages/deep/fixtures
+tools/transformer/out
+packages/deep/models
+packages/core/src/datasets/iris.ts
+packages/core/src/datasets/wine.ts
+packages/core/src/datasets/diabetes.ts
+packages/core/src/datasets/breastCancer.ts
+packages/core/fixtures
