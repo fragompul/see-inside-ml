@@ -109,7 +109,7 @@ Open http://localhost:5173. Use the sun / monitor / moon selector in the header 
 | `npm test`            | Unit and parity tests (Vitest), all packages                           |
 | `npm run e2e`         | End-to-end tests (Playwright), including the axe accessibility sweep   |
 | `npm run check`       | Format, lint, types, tests, build and bundle budget (what CI runs)     |
-| `npm run screenshots` | Regenerate the README images (dev server running)                      |
+| `npm run screenshots -w @sim/web`| Regenerate the README images (dev server running)                      |
 
 ## Architecture
 
