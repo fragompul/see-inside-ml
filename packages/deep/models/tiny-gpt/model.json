@@ -1,0 +1,220 @@
+{
+ "config": {
+  "vocab": 512,
+  "ctx": 48,
+  "d": 64,
+  "layers": 2,
+  "heads": 4
+ },
+ "eotId": 511,
+ "dtype": "float32",
+ "tensors": [
+  {
+   "name": "wte",
+   "shape": [
+    512,
+    64
+   ],
+   "offset": 0
+  },
+  {
+   "name": "wpe",
+   "shape": [
+    48,
+    64
+   ],
+   "offset": 131072
+  },
+  {
+   "name": "lnf.g",
+   "shape": [
+    64
+   ],
+   "offset": 143360
+  },
+  {
+   "name": "lnf.b",
+   "shape": [
+    64
+   ],
+   "offset": 143616
+  },
+  {
+   "name": "h0.ln1.g",
+   "shape": [
+    64
+   ],
+   "offset": 143872
+  },
+  {
+   "name": "h0.ln1.b",
+   "shape": [
+    64
+   ],
+   "offset": 144128
+  },
+  {
+   "name": "h0.attn.w",
+   "shape": [
+    64,
+    192
+   ],
+   "offset": 144384
+  },
+  {
+   "name": "h0.attn.b",
+   "shape": [
+    192
+   ],
+   "offset": 193536
+  },
+  {
+   "name": "h0.proj.w",
+   "shape": [
+    64,
+    64
+   ],
+   "offset": 194304
+  },
+  {
+   "name": "h0.proj.b",
+   "shape": [
+    64
+   ],
+   "offset": 210688
+  },
+  {
+   "name": "h0.ln2.g",
+   "shape": [
+    64
+   ],
+   "offset": 210944
+  },
+  {
+   "name": "h0.ln2.b",
+   "shape": [
+    64
+   ],
+   "offset": 211200
+  },
+  {
+   "name": "h0.fc.w",
+   "shape": [
+    64,
+    256
+   ],
+   "offset": 211456
+  },
+  {
+   "name": "h0.fc.b",
+   "shape": [
+    256
+   ],
+   "offset": 276992
+  },
+  {
+   "name": "h0.fc2.w",
+   "shape": [
+    256,
+    64
+   ],
+   "offset": 278016
+  },
+  {
+   "name": "h0.fc2.b",
+   "shape": [
+    64
+   ],
+   "offset": 343552
+  },
+  {
+   "name": "h1.ln1.g",
+   "shape": [
+    64
+   ],
+   "offset": 343808
+  },
+  {
+   "name": "h1.ln1.b",
+   "shape": [
+    64
+   ],
+   "offset": 344064
+  },
+  {
+   "name": "h1.attn.w",
+   "shape": [
+    64,
+    192
+   ],
+   "offset": 344320
+  },
+  {
+   "name": "h1.attn.b",
+   "shape": [
+    192
+   ],
+   "offset": 393472
+  },
+  {
+   "name": "h1.proj.w",
+   "shape": [
+    64,
+    64
+   ],
+   "offset": 394240
+  },
+  {
+   "name": "h1.proj.b",
+   "shape": [
+    64
+   ],
+   "offset": 410624
+  },
+  {
+   "name": "h1.ln2.g",
+   "shape": [
+    64
+   ],
+   "offset": 410880
+  },
+  {
+   "name": "h1.ln2.b",
+   "shape": [
+    64
+   ],
+   "offset": 411136
+  },
+  {
+   "name": "h1.fc.w",
+   "shape": [
+    64,
+    256
+   ],
+   "offset": 411392
+  },
+  {
+   "name": "h1.fc.b",
+   "shape": [
+    256
+   ],
+   "offset": 476928
+  },
+  {
+   "name": "h1.fc2.w",
+   "shape": [
+    256,
+    64
+   ],
+   "offset": 477952
+  },
+  {
+   "name": "h1.fc2.b",
+   "shape": [
+    64
+   ],
+   "offset": 543488
+  }
+ ],
+ "trainedOn": "synthetic mini-stories (tools/transformer/corpus.py)"
+}
