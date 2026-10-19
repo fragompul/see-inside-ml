@@ -15,7 +15,7 @@ import { NeuralNetwork, type LayerWeights } from './network';
 /**
  * Golden-fixture parity: the TypeScript engine must reproduce the original NumPy implementation
  * (forward, gradients, losses, optimiser trajectories) on identical inputs and initial weights.
- * Fixtures come from reference/python/generate_fixtures.py.
+ * Fixtures were generated once from the original NumPy implementation (since removed from the repo).
  */
 
 interface Case {

@@ -96,8 +96,8 @@ the engine package and the client against an in-process transport.
 3. **Behavioural tests:** learning actually happens (circles ≥ 90 % test accuracy, plane → MSE < 0.01),
    determinism, live vs rebuild semantics, input validation.
 
-Regenerate fixtures with `python reference/python/generate_fixtures.py` (only needed while the
-Python reference exists; the JSON is committed).
+The fixtures were generated once from the original NumPy implementation and are committed as JSON; the
+Python code itself has been removed from the repository.
 
 ### Performance
 

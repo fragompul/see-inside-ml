@@ -119,7 +119,6 @@ packages/core/       Numerics: matrix, RNG, linalg, statistics, metrics, optimis
 packages/classic/    Classical ML: regression, trees, ensembles, SVM, GP, clustering, PCA, HMM, MCMC, survival…
 packages/deep/       Neural engines: MLP, CNN, RNN, transformer, VAE, GAN, diffusion, flows, RL, MoE, GNN, RLHF…
 tools/               Author-time Python and scripts: tiny-GPT pipeline, fixture generators, bundle budget
-reference/           The original Python/NumPy implementation, kept as a numerical oracle
 docs/                Architecture notes, decisions and the roadmap
 ```
 
